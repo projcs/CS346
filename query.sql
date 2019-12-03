@@ -362,6 +362,7 @@ LEFT JOIN Customer ON Customer.CustKey=Sales.CustKey
 WHERE Year=1995
 GROUP BY Month, Nation;
 
+--report the number of distinct customers by nation per month in 1995 
 SELECT Year, Month, Nation, Num_of_Customer FROM v3;
 -- report the year average of dictinct customers
 SELECT Year, Nation, AVG(Num_of_Customer) AS Year_AVG FROM v3
