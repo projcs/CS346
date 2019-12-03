@@ -851,6 +851,11 @@ GROUP BY c.Region;
 -- 5 rows in set (10.00 sec)
 
 -- query 6
+SELECT c.Nation,count(*)
+FROM Sales s,Customer c
+WHERE s.CustKey=c.CustKey AND
+c.Region='EUROPE'
+GROUP BY c.Nation;
 -- +----------------+----------+
 -- | Nation         | count(*) |
 -- +----------------+----------+
@@ -891,6 +896,11 @@ AND (c.Region='AMERICA' OR c.Region='ASIA');
 -- 1 row in set (25.72 sec)
 
 -- query 8
+SELECT count(*)
+FROM Sales s,Customer c
+WHERE s.CustKey=c.CustKey AND
+c.Nation IN
+('FRANCE','GERMANY','BRAZIL','ALGERIA','JAPAN');
 -- +----------+
 -- | count(*) |
 -- +----------+
