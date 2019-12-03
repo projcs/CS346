@@ -811,7 +811,7 @@ CREATE VIEW view_4_2 AS
 SELECT ProductKey,Region,Quarter
 FROM view_4_0 WHERE Quarter=1 OR Quarter=2;
 
-SELECT v1.Region,count(v1.ProductKey) AS product_num
+SELECT v1.Region,count(DISTINCT(v1.ProductKey)) AS product_num
 FROM view_4_1 v1 LEFT JOIN view_4_2 v2
 ON v1.ProductKey=v2.ProductKey
 WHERE v2.ProductKey IS NULL
@@ -821,13 +821,13 @@ GROUP BY v1.Region;
 -- +-------------+-------------+
 -- | Region      | product_num |
 -- +-------------+-------------+
--- | AFRICA      |        9761 |
--- | AMERICA     |        9560 |
--- | ASIA        |        9756 |
--- | EUROPE      |        9783 |
--- | MIDDLE EAST |        9493 |
+-- | AFRICA      |        7832 |
+-- | AMERICA     |        7713 |
+-- | ASIA        |        7856 |
+-- | EUROPE      |        7802 |
+-- | MIDDLE EAST |        7694 |
 -- +-------------+-------------+
--- 5 rows in set (8 min 8.67 sec)
+-- 5 rows in set (8 min 28.27 sec)
 
 
 -- Query 5 --
